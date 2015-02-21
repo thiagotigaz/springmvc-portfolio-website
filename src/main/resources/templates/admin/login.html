@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	layout:decorator="layout/login">
+<head>
+<title th:text="#{login.page.title}">Login - Management Area</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container">
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-4">
+				<div class="form-signin">
+					<h2 class="form-signin-heading">Please sign in</h2>
+					<div th:if="${param.error}" class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						Invalid username and password.
+					</div>
+					<div th:if="${param.logout}" class="alert alert-warning alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						You have been logged out.
+					</div>
+					
+					<form th:action="@{/login}" method="post">
+						<label for="inputEmail" class="sr-only">Email address</label> <input
+							type="text" id="inputEmail" name="username" class="form-control"
+							placeholder="Email address" required="" autofocus="" /> <label
+							for="inputPassword" class="sr-only">Password</label> <input
+							type="password" id="inputPassword" name="password"
+							class="form-control" placeholder="Password" required="" />
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+							in</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

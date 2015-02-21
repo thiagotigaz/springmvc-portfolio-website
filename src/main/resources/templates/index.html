@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Meta Tag for responsive -->
+<meta name="viewport" content="width=1024, minimal-ui" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Thiago Lima - Java Web Developer</title>
+
+<!-- Loading of stylesheet for the design -->
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- This tells the page to watch for special styling for IE9 -->
+<!--[if IE 9 ]>    <html class= "ie9"> <![endif]-->
+
+<!-- Important external stylesheets -->
+<link rel="stylesheet" th:href="@{/css/glyphicons.css}"
+	href="../static/css/glyphicons.css" />
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}"
+	href="../static/css/owl.carousel.css" />
+<link rel="stylesheet" th:href="@{/css/owl.theme.css}"
+	href="../static/css/owl.theme.css" />
+<link rel="stylesheet" th:href="@{/css/fontello.css}"
+	href="../static/css/fontello.css" />
+<link rel="stylesheet" th:href="@{/css/jquery.fancybox.css}"
+	href="../static/css/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" th:href="@{/css/jquery.fs.wallpaper.css}"
+	href="../static/css/jquery.fs.wallpaper.css" type="text/css"
+	media="all" />
+<link rel="stylesheet" th:href="@{/css/animate.css}"
+	href="../static/css/animate.css" />
+
+<!-- Finally we will load the font from Google Fonts -->
+<link
+	href="http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900"
+	rel="stylesheet" type="text/css" />
+
+</head>
+
+<body id="top">
+
+	<!-- Start of Social Section at bottom of page -->
+	<div id="socialsection">
+
+		<!-- You MUST add the URL's for your account at each social network in the code below to swap out the hash # tag -->
+		<div id="social-left">
+			<a href="http://br.linkedin.com/in/thiagotigaz/" target="_blank"><i
+				class="icon-linkedin"></i></a> <a href="http://github.com/thiagotigaz"
+				target="_blank"><i class="icon-github-circled"></i></a> <a
+				href="https://www.facebook.com/thiagotigaz" target="_blank"><i
+				class="icon-facebook"></i></a> <a href="https://twitter.com/thiagotigaz"><i
+				class="icon-twitter"></i></a>
+		</div>
+
+		<div id="social-button"></div>
+
+		<!-- You MUST change the URL definition in these links to share YOUR page - simply change the URL -->
+		<div id="social-right">
+			<a href="http://br.linkedin.com/in/thiagotigaz/" target="_blank"><i
+				class="icon-linkedin"></i></a> <a href="http://github.com/thiagotigaz"
+				target="_blank"><i class="icon-github-circled"></i></a> <a
+				href="https://www.facebook.com/thiagotigaz" target="_blank"><i
+				class="icon-facebook"></i></a> <a href="https://twitter.com/thiagotigaz"><i
+				class="icon-twitter"></i></a>
+		</div>
+
+	</div>
+	<!-- End of Social Section at bottom of page -->
+
+
+
+	<!-- HEADER SECTION -->
+	<header>
+
+		<!-- Start of Header Container - the content div that is a set width and centralized -->
+		<div class="header-container">
+
+			<div id="menu" class="menu">
+				<div id="nav" class="nav">
+					<ul>
+						<li><a href="#top">Home</a></li>
+						<li><a href="#About">About</a></li>
+						<li><a href="#Skills">Skills</a></li>
+						<li><a href="#CV">CV / Resume</a></li>
+						<!-- <li><a href="#Testimonials">Testimonials</a></li>
+                    <li><a href="#Clients">Clients</a></li> -->
+						<li th:unless="${#lists.isEmpty(allPortfolios)}"><a
+							href="#Portfolio">Portfolio</a></li>
+						<li><a href="#Contact">Contact Me</a></li>
+					</ul>
+				</div>
+				<div id="menu-button"></div>
+			</div>
+
+		</div>
+		<!-- End of Header Container -->
+	</header>
+	<!-- End of Header -->
+
+
+	<!-- TOP SECTION -->
+
+	<!-- Start of Video Element -->
+	<div id="video_element">
+
+		<!-- Start of Main Title + Intro -->
+		<div class="huge-title">
+
+			<img src="img/thiago.png" alt="Thiago Lima" class="headshot wow tada"
+				data-wow-delay="3s" data-wow-offset="80" data-wow-duration="1s" />
+			<h1 class="wow bounceInDown colorBlack" data-wow-offset="80"
+				data-wow-duration="3s">Thiago Lima</h1>
+
+			<!-- Start of Owl Testimonial Carousel -->
+			<div class="testimonials owl-carousel">
+
+				<div>
+					<!-- Start of Slide 1 -->
+					<div class="button-box">
+						<h4>Java Engineer</h4>
+					</div>
+				</div>
+
+				<div>
+					<!-- Start of Slide 2 -->
+					<div class="button-box">
+						<h4>Specialized in Cloud Computing and Android</h4>
+					</div>
+				</div>
+
+				<div>
+					<!-- Start of Slide 3 -->
+					<div class="button-box">
+						<h4>Startup Entrepreneur</h4>
+					</div>
+				</div>
+
+			</div>
+			<!-- End of Owl Testimonial Carousel -->
+
+		</div>
+		<!-- End of Main Title + Intro -->
+
+		<!-- Start of Scroll Down Message and animation -->
+		<div id="godown" class="floating">
+
+			<p>
+				<a href="#About">Learn more about me</a>
+			</p>
+			<img src="img/godown.png" alt="down" />
+
+		</div>
+		<!-- End of Scroll Down Message and animation -->
+
+		<!-- Start of Shade - this is the css based gradient over the image for that cool effect -->
+		<div class="shade"></div>
+		<!-- End of Shade -->
+
+	</div>
+	<!-- End of Video Element -->
+
+
+
+	<!-- Start of Wrapper - the full width container -->
+	<div class="wrapper">
+
+		<!-- Start of Container -->
+		<div class="container">
+
+
+
+			<!-- AT A GLANCE SECTION -->
+
+			<!-- Start of Content - where the content be -->
+			<div class="content2">
+
+				<!-- Start of Hero - The main top image like a phone etc -->
+				<div class="hero">
+
+					<h3>At a glance</h3>
+
+					<div class="one_third wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s">
+						<h4>FULL NAME</h4>
+						<h5>Thiago Pinto de Lima</h5>
+					</div>
+
+					<div class="one_third wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s" data-wow-delay="0.2s">
+						<h4>BIRTHPLACE</h4>
+						<h5>João Pessoa, Brazil</h5>
+					</div>
+
+					<div class="one_third_last wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s" data-wow-delay="0.3s">
+						<h4>BORN</h4>
+						<h5>1989</h5>
+					</div>
+
+					<div class="one_third wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s">
+						<h4>RESIDENCE</h4>
+						<h5>João Pessoa, PB</h5>
+					</div>
+
+					<div class="one_third wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s" data-wow-delay="0.2s">
+						<h4>EDUCATION</h4>
+						<h5>BS, PG</h5>
+					</div>
+
+					<div class="one_third_last wow fadeInUp" data-wow-offset="120"
+						data-wow-duration="1s" data-wow-delay="0.3s">
+						<h4>HOBBIES</h4>
+						<h5>Gym, Movies, Blogs</h5>
+					</div>
+
+				</div>
+				<!-- End of Hero -->
+
+			</div>
+			<!-- End of Content -->
+
+
+
+			<!-- ABOUT SECTION -->
+
+			<!-- Start of White Container -->
+			<div class="whitecontainer">
+
+				<!-- Start of Content -->
+				<div class="content" id="About">
+
+					<h2 class="border wow fadeInRight" data-wow-offset="80"
+						data-wow-duration="2s">About me</h2>
+					<h3 class="fadeInRight animated">Java Engineer / Specialized
+						in Cloud Computing with Android</h3>
+					<p></p>
+
+					<p>Thiago Pinto de Lima, Java Software Engineer, works with
+						Java Web Applications and Android, have knowledge in technologies
+						such as JavaEE, JSF, JSP, Primefaces, Hibernate, Bootstrap 2 and
+						3, Jquery, REST Services (Spring), Spring MVC (Thymeleaf), Maven,
+						Gradle and Android, also have experience with Git, SVN and SCRUM.</p>
+
+					<!--
+                <blockquote class="wow fadeInLeftBig" data-wow-offset="80" data-wow-duration="3s"><p>I wish to expand my skills on a daily basis with the help of an employee-focused company.</p></blockquote>
+
+                <img src="img/signature.png" width="250" alt="John Hancock">
+-->
+
+				</div>
+				<!-- End of Content -->
+
+			</div>
+			<!-- End of White Container -->
+
+
+
+			<!-- SKILLS SECTION -->
+
+			<!-- Start of Parallax 1 Container -->
+			<div class="parallax1">
+
+				<!-- Start of Content -->
+				<div class="content" id="Skills">
+
+					<h2 class="border wow fadeInRight" data-wow-offset="80"
+						data-wow-duration="2s">My Skills</h2>
+
+
+					<!--
+                <div class="one_third wow fadeInLeftBig" data-wow-offset="80" data-wow-duration="2s">
+
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat.</p>
+                    <div class="button-box"><a href="#Contact" class="button">Contact Me</a></div>
+
+                </div>
+-->
+
+					<!-- Start of One Half Column Last Container -->
+					<div class="container" data-wow-offset="100" data-wow-duration="2s">
+
+						<!-- Start of 3 rows -->
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="85"
+								data-readOnly="true" />
+							<h3>Java EE</h3>
+						</div>
+
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="80"
+								data-readOnly="true" />
+							<h3>JPA/Hibernate</h3>
+						</div>
+
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="80"
+								data-readOnly="true" />
+							<h3>Spring</h3>
+						</div>
+
+						<div class="one_fourth_last centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="50"
+								data-readOnly="true" />
+							<h3>AWS</h3>
+						</div>
+						<!-- End of 3 rows -->
+
+
+						<!-- Start of 2nd 3 rows -->
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="80"
+								data-readOnly="true" />
+							<h3>Android</h3>
+						</div>
+
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="90"
+								data-readOnly="true" />
+							<h3>Unix/Linux</h3>
+						</div>
+
+						<div class="one_fourth centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="80"
+								data-readOnly="true" />
+							<h3>PHP/MYSQL</h3>
+						</div>
+
+						<div class="one_fourth_last centered skill">
+							<input class="knob" data-width="100%" data-fgColor="#ffffff"
+								data-skin="cr3ativ" data-thickness=".2" value="85"
+								data-readOnly="true" />
+							<h3>Css/Bootstrap/Jquery</h3>
+						</div>
+						<!-- End of 2nd 3 rows -->
+
+					</div>
+					<!-- End of One Half Column Last Container -->
+
+				</div>
+				<!-- End of Content -->
+
+			</div>
+			<!-- End of Parallax 1 Container -->
+
+
+
+			<!-- CV / RESUME SECTION -->
+
+			<!-- Start of White Container -->
+			<div class="whitecontainer">
+
+				<!-- Start of Content -->
+				<div class="content" id="CV">
+
+					<h2 class="border wow fadeInRight" data-wow-offset="80"
+						data-wow-duration="2s">curriculum vitae</h2>
+
+					<!-- Start of 1/3 Column -->
+					<div class="one_third clearfix wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h2>Education</h2>
+					</div>
+					<!-- End of 1/3 Column -->
+
+					<!-- Start of 2/3 Column Last -->
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>IFPB - Instituto Federal de Educação Ciência e Tecnologia
+							da Paraiba</h3>
+						<h5>Tecnologo em Sistemas para Internet</h5>
+						<p class="small">3 Years</p>
+						<div class="date">2008 - 2011</div>
+						<!--                    <p>Titles are appropriately sized and are darker giving a good visual hierachy to your page and content. With the light background and not-quite-so-dark font color it's also easy on the eyes for reading making your copy pop, and your message stand-out.</p>-->
+					</div>
+					<!-- End of 2/3 Column Last -->
+					<div class="bigspace"></div>
+					<!-- Start of 1/3 Column -->
+					<div class="one_third wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h2>Work Experience</h2>
+					</div>
+					<!-- End of 1/3 Column -->
+
+
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>FREELANCER</h3>
+						<h5>Supercloud</h5>
+						<p class="small">3 Years</p>
+						<div class="date">Out 2012 - Present</div>
+						<p>I Work managing emploees and projects that are currently
+							being developed in the company, as well as contacting and
+							maintaining relationships with costumers.</p>
+						<p>As a developer i'm working with friends doing some R&amp;D
+							of what we're going to use in our next projects. like leaning IOS
+							and Android for a future App that we gonna develop. or trying to
+							improve some architecture that we're already using in our
+							projects.</p>
+					</div>
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>Java Software Engineer</h3>
+						<h5>DevFactory</h5>
+						<p class="small">1 Month</p>
+						<div class="date">May 2014 - April 2014</div>
+					</div>
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>C Developer</h3>
+						<h5>CESAR</h5>
+						<p class="small">7 Mounths</p>
+						<div class="date">Nov 2011 - May 2012</div>
+						<p>Participated in the Software Residency program promoted by
+							CESAR and sponsored by Datacom which had the purpose of training
+							professionals to work in the Datacom’s R&amp;D department.
+							Software Residency is a kind of training program that combines
+							formal teaching and deep practice (based on Medical Residency).
+							This one was focused on software development for Metro Ethernet
+							Switches, using C, Linux, raw sockets, Pthreads, GNU Make, Git
+							and Scrum. Performed the role of developer that worked with a
+							team that implemented LLDP-MED (Link Layer Discovery
+							Protocol-Media Endpoint Discovery) and designed and implemented
+							LRP (Loop Recovery Protocol) [1], designing software
+							architecture, specifying tasks, coding and revising code.
+							Researched technical standards, such as TIAs, RFCs, IEEEs, and US
+							Patents. [1] LRP is a proprietary protocol designed from scratch,
+							in that residency, to detect loops in layer 2 networks</p>
+					</div>
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>STARTUP IDEA/PROTOTYPE</h3>
+						<h5>TapCave</h5>
+						<p class="small">2 Year 2 Mounths</p>
+						<div class="date">Jan 2013 - Present</div>
+						<p>I work developing the project as well as trying to find
+							investor and spread it.</p>
+						<p>Right now we have already set the service using Java,
+							Spring boot, Spring data, Spring Rest services. First we are
+							developing the Android version, after that we gonna start the
+							IOS. It's already getting location and creating caves based on
+							location, at this moment we are working on sending messages
+							through pubnub.</p>
+						<p>Startup Description</p>
+						<p>PROBLEM Talk with a person that is at the same place at you
+							but you can't just start a conversation because you're not in a
+							right situation to do it(like a girl in a table with lots on
+							unknown persons.</p>
+						<p>SOLUTION The social app helps people send message to others
+							that are at the same place. The app auto join a channel(Cave) of
+							the place you are. Users gonna use their facebook to log in, so
+							people can see others profile and start chatting.</p>
+						<p>We gonna have a button called Where To Go. This button
+							gonna show featured caves and discounts. It can show a cave
+							that's free to enter, beers 50% off until midnight, things like
+							this, so the owners of the establishments gonna pay for extra
+							visibility. We also gonna offer a possibility to show ads inside
+							the caves, but we will not put ad bars on our app.</p>
+						<!--                    <a href="#" target="_blank" class="button-reverse">Download My CV</a><a href="http://www.linkedin.com/pub/thiago-lima/33/b36/919" target="_blank" class="button">LinkedIn Profile</a>-->
+					</div>
+
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>STUDY GROUP/Developer</h3>
+						<h5>Geecko Systems</h5>
+						<p class="small">2009 - Present</p>
+						<div class="date">Jan 2011 - May 2012</div>
+						<p>As a developer i'm working with friends doing some R&amp;D
+							of what we're going to use in our next projects. like leaning IOS
+							and Android for a future App that we gonna develop. or trying to
+							improve some architecture that we're already using in our
+							projects.</p>
+					</div>
+
+					<div class="two_third_last wow fadeInUp" data-wow-offset="80"
+						data-wow-duration="2s">
+						<h3>JAVA Developer/INTERSHIP</h3>
+						<h5>eGen</h5>
+						<p class="small">6 Months</p>
+						<div class="date">May 2011 - Nov 2011</div>
+						<p>Java Developer, Vaadin Framework</p>
+					</div>
+
+				</div>
+				<!-- End of Content -->
+
+			</div>
+			<!-- End of White Container -->
+
+
+
+			<!-- TESTIMONIALS SECTION -->
+
+			<!-- Start of Parallax 2 Container -->
+			<!-- <div class="parallax2"> -->
+
+			<!-- Start of Content -->
+			<!-- <div class="content shadow" id="Testimonials">
+                    
+                	<h2 class="border wow fadeInRightBig" data-wow-offset="80" data-wow-duration="2s">Client Testimonials</h2> -->
+
+			<!-- Start of Owl Carousel -->
+			<!-- <div class="testimonials owl-carousel">
+                          <div><blockquote><p>The content width, line spacing and font size follow the golden ratio formula for optimal reading on any device.</p><cite>Thiago Lima</cite></blockquote></div>
+                          <div><blockquote><p>The content width, line spacing and font size follow the golden ratio formula.</p><cite>Thiago Lima</cite></blockquote></div>
+                          <div><blockquote><p>The content width, line spacing</p><cite>Thiago Lima</cite></blockquote></div>
+                          <div><blockquote><p>The content width, line spacing and font size follow the golden ratio formula for optimal.</p><cite>Thiago Lima</cite></blockquote></div>
+                    </div> -->
+			<!-- End of Carousel -->
+
+			<!-- </div> -->
+			<!-- End of Content -->
+
+			<!-- </div> -->
+			<!-- End of Parallax 2 Container -->
+
+
+
+			<!-- CLIENTS SECTION -->
+
+			<!-- Start of Grey Container -->
+			<!-- <div class="greycontainer"> -->
+
+			<!-- Start of Content -->
+			<!-- <div class="content" id="Clients">
+                    
+                    <h2 class="border wow fadeInRightBig" data-wow-offset="80" data-wow-duration="2s">Clients</h2>
+                    <p>The fully responsive <a href="https://github.com/OwlFonk/OwlCarousel">Owl Carousel</a> is also touch enabled for devices such as smart phones and tablets. The carousel will accept any content such as images, styled divs, text blocks or anything else you can create.</p> -->
+
+			<!-- Start of Owl Carousel -->
+			<!-- <div class="owl-example owl-carousel">
+                        
+                        <div><a href="img/client1.png" class="fancybox" rel="group"><img src="img/client1.png" alt="client 1" width="80%"/></a></div>
+                        <div><a href="img/client2.png" class="fancybox" rel="group"><img src="img/client2.png" alt="client 2" width="80%"/></a></div>
+                        <div><a href="img/client3.png" class="fancybox" rel="group"><img src="img/client3.png" alt="client 3" width="80%"/></a></div>
+                        <div><a href="img/client4.png" class="fancybox" rel="group"><img src="img/client4.png" alt="client 4" width="80%"/></a></div>
+                        <div><a href="img/client5.png" class="fancybox" rel="group"><img src="img/client5.png" alt="client 5" width="80%"/></a></div>
+                        <div><a href="img/client6.png" class="fancybox" rel="group"><img src="img/client6.png" alt="client 6" width="80%"/></a></div>
+                        
+                    </div> -->
+			<!-- End of Carousel -->
+
+			<!-- </div> -->
+			<!-- End of Content -->
+
+			<!-- </div> -->
+			<!-- End of Grey Container -->
+
+
+
+			<!-- PORTFOLIO SECTION -->
+
+			<!-- Start of White Container -->
+			<div th:unless="${#lists.isEmpty(allPortfolios)}"
+				class="whitecontainer">
+
+				<!-- Start of Content - where the content be -->
+				<div class="content" id="Portfolio">
+
+					<h2 class="border wow fadeInRight" data-wow-offset="80"
+						data-wow-duration="2s">Portfolio</h2>
+					<!--
+                <p>Display as many or as little images as you wish using the gallery module. This 3 column section can be stacked multiple times to provide a huge amount of images if required.</p>
+                <p>Lightbox powered means larger images are just a click away.</p>
+                <p>These images are contained in a group meaning that your user can click any image and then go back and forwards through each one in the lightbox.</p>
+-->
+
+					<div class="center-align">
+
+						<!-- Start of 3 rows -->
+						<div th:each="rowPortfolio:${allPortfolios}">
+							<div th:each="portfolio,status:${rowPortfolio}"
+								th:class="(${status.index==0}?'one_third fadeInLeft':(${status.index==2}?'one_third_last fadeInRight':'one_third fadeInUp'))+' wow'"
+								data-wow-offset="80" data-wow-duration="2s">
+								<div class="infopanel">
+									<a href="img/port2.jpg"
+										th:href="@{/file/{fileId}(fileId=${portfolio.coverImage!=null?portfolio.coverImage.id:'610'})}"
+										class="fancybox fancybox.image" rel="group">
+										<div class="eye">
+											<img
+												th:src="${portfolio.coverImage!=null?'/file/'+portfolio.coverImage.id:'/img/port_default.png'}"
+												src="img/port2.jpg" th:alt="${portfolio.title}"
+												alt="Title Portfolio" />
+										</div>
+									</a>
+
+									<p>
+										<a th:href="@{/portfolio/{id}(id=${portfolio.id})}" href="#"
+											target="_blank"
+											th:text="${not #strings.isEmpty(portfolio.customer)}?${portfolio.title} + ' / ' + ${portfolio.customer}:${portfolio.title}">Super
+											Cloud</a>
+
+									</p>
+									<div class="tags">
+										<ul>
+											<li th:each="tag:${portfolio.tags}" role="presentation"><a
+												href="#" th:text="${tag.name}">Home</a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+
+					</div>
+
+				</div>
+				<!-- End of Content -->
+
+			</div>
+			<!-- End of White Container -->
+
+
+
+			<!-- CONTACT FORM SECTION -->
+
+			<!-- Start of Grey Container -->
+			<div class="greycontainer" id="Contact">
+
+				<!-- Start of Content -->
+				<div class="content centered" id="Contact">
+
+					<h2>Contact</h2>
+					<!-- Begin Contact Form -->
+					<form action="#" th:action="@{/mail/send}" id="contact_form"
+						method="post" class="wow fadeIn" data-wow-offset="80"
+						data-wow-duration="1s">
+
+						<p>
+							<label>Name</label> <input type="text" name="name" id="name"
+								value="" class="requiredField name" />
+						</p>
+
+						<p>
+							<label>Email Address</label> <input type="text" name="email"
+								id="email" value="" class="requiredField email" />
+						</p>
+
+						<p>
+							<label>Your Message</label>
+							<textarea name="message" id="message" rows="8" cols="30"
+								class="requiredField message"></textarea>
+						</p>
+
+						<p>
+							<input name="submitted" id="submitted" value="Submit"
+								class="submit" type="submit" />
+						</p>
+
+					</form>
+					<!--End Contact Form -->
+
+				</div>
+				<!-- End of Content -->
+
+			</div>
+			<!-- End of Grey Container -->
+
+
+
+			<!-- FOOTER SECTION -->
+
+			<!-- Start Of Footer -->
+			<footer>
+
+				<!-- Start of Content -->
+				<div class="content">
+					<div id="address">
+						<address>
+
+							<span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+							<strong>SUPER CLOUD</strong><br /> <span
+								class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+							<strong>Thiago Pinto de Lima</strong><br /> <span
+								class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							<a class="subLink" href="mailto: thiago@supercloud.com.br">thiago@supercloud.com.br</a><br />
+							<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+							João Pessoa, PB<br /> <abbr title="Phone"> <span
+								class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+							</abbr>(83)8801-3269
+						</address>
+					</div>
+
+					<address></address>
+					<p class="copyright" th:text="'Copyright ' + ${#dates.format(#dates.createToday(), 'yyyy')}">Copyright 2015</p>
+
+				</div>
+				<!-- End of Content -->
+				<div class="back-to-top">
+					<a id="go-top" href="#top"><span
+						class="glyphicon glyphicon-arrow-up"></span></a>
+				</div>
+			</footer>
+			<!-- End Of Footer -->
+
+		</div>
+		<!-- End of Container -->
+
+	</div>
+	<!-- End of Wrapper -->
+
+	<!--Loading Scripts -->
+	<!-- First we will load jQuery -->
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Now we load the JS files for the fancy things on the page -->
+	<script type="text/javascript" th:src="@{/js/owl.carousel.js}"
+		src="../static/js/owl.carousel.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.fitvids.js}"
+		src="../static/js/jquery.fitvids.js"></script>
+	<script type="text/javascript"
+		th:src="@{/js/jquery.fancybox.pack.js?v=2.1.5}"
+		src="../static/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<script type="text/javascript" th:src="@{/js/retina.js}"
+		src="../static/js/retina.js"></script>
+	<script type="text/javascript"
+		th:src="@{/js/jquery.scrollToTop.min.js}"
+		src="../static/js/jquery.scrollToTop.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.fs.wallpaper.js}"
+		src="../static/js/jquery.fs.wallpaper.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.easing.1.3.js}"
+		src="../static/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.plusanchor.js}"
+		src="../static/js/jquery.plusanchor.js"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.knob.js}"
+		src="../static/js/jquery.knob.js"></script>
+	<!--[if IE]><script type="text/javascript" th:src="@{/js/excanvas.js}" src="../static/js/excanvas.js"></script><![endif]-->
+	<script type="text/javascript" th:src="@{/js/app.js}"
+		src="../static/js/app.js"></script>
+	<script type="text/javascript" th:src="@{/js/wow.min.js}"
+		src="../static/js/wow.min.js"></script>
+</body>
+</html>
