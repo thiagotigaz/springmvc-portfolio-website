@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 import br.com.supercloud.cms.model.Tag;
 
 @Repository
-public interface TagRepository extends PagingAndSortingRepository<Tag, Integer>{
+public interface TagRepository extends PagingAndSortingRepository<Tag, Integer> {
 
 	@Query("Select t.name from Tag t")
 	List<String> findAllTagNames();
-	
+
 	List<Tag> findAllByNameAllIgnoreCaseIn(String[] tagsName);
 
 	Tag findByName(@Param("name") String tagName);

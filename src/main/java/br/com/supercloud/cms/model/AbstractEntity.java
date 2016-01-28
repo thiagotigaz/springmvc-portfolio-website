@@ -2,7 +2,9 @@ package br.com.supercloud.cms.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
@@ -16,19 +18,23 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractEntity {
 
-    @CreatedDate
-    private Date createdDate;
+	@CreatedDate
+	@Column(name = "CREATED_DATE")
+	private Date createdDate;
 
-    @LastModifiedDate
-    private Date lastModifiedDate;
-    
-    @CreatedBy
-    @OneToOne
-    private User createdBy;
-    
-    @LastModifiedBy
-    @OneToOne
-    private User lastModifiedBy;
+	@LastModifiedDate
+	@Column(name = "LAST_MODIFIED_DATE")
+	private Date lastModifiedDate;
+
+	@CreatedBy
+	@OneToOne
+	@JoinColumn(name = "CREATED_BY_ID")
+	private User createdBy;
+
+	@LastModifiedBy
+	@OneToOne
+	@JoinColumn(name = "LAST_MODIFIED_BY_ID")
+	private User lastModifiedBy;
 
 	public Date getCreatedDate() {
 		return createdDate;
@@ -61,5 +67,6 @@ public abstract class AbstractEntity {
 	public void setLastModifiedBy(User lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
 	}
-	
+
 }
+

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Repository;
 import br.com.supercloud.cms.model.Portfolio;
 
 @Repository
-public interface PortfolioRepository extends PagingAndSortingRepository<Portfolio,Integer>{
-	
+public interface PortfolioRepository extends PagingAndSortingRepository<Portfolio, Integer> {
+
 	public List<Portfolio> findAll();
 
 	@Modifying

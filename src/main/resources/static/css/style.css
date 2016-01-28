@@ -127,3 +127,14 @@ span.twitter-typeahead {
 .input-group.input-group-sm span.twitter-typeahead .tt-dropdown-menu {
   top: 28px !important;
 }
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    max-width: 1366px;
+    max-height: 768px;
+}
+
+.carousel {
+	max-width: 1366px;
+	max-height: 768px;
+}

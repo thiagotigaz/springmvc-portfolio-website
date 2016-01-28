@@ -7,30 +7,33 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import br.com.supercloud.cms.model.User;
 import br.com.supercloud.cms.util.AuditorAwareImpl;
 
 @SpringBootApplication
+@EnableCaching
+@EnableJpaRepositories
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
-public class Application extends SpringBootServletInitializer{
+public class Application extends SpringBootServletInitializer {
+
 	private static final String MAX_REQUEST_SIZE = "15MB";
 
-	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+
 	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
+	}
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -64,12 +67,5 @@ public class Application extends SpringBootServletInitializer{
 		// Return the configuration to setup multipart in the container
 		return factory.createMultipartConfig();
 	}
-	
-	@Bean
-	public CharacterEncodingFilter characterEncodingFilterConfig(){
-		CharacterEncodingFilter filter = new CharacterEncodingFilter();
-		filter.setEncoding("UTF-8");
-		filter.setForceEncoding(true);
-		return filter;
-	}
+
 }

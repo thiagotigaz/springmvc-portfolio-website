@@ -1,5 +1,8 @@
 package br.com.supercloud.cms.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,15 +10,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "T_FILE")
-public class SCFile extends AbstractEntity {
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+public class SCFile extends AbstractEntity implements Serializable{
 
+	private static final long serialVersionUID = 3545185650410127060L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String extension;
+
+	@Column(name="CONTENT_TYPE")
 	private String contentType;
+
 	@ManyToOne
 	private Portfolio portfolio;
 

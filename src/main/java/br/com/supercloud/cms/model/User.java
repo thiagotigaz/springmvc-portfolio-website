@@ -10,37 +10,47 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "T_USER")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class User extends AbstractEntity implements UserDetails, Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -604570634696304253L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Transient
 	private transient Collection<GrantedAuthority> authorities;
-	@ManyToMany(fetch = FetchType.EAGER)
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "T_USER_ROLES")
 	private List<Role> roles;
+	
 	private String name;
+	
 	private String email;
+	
 	@Temporal(TemporalType.DATE)
 	private Date dob;
+	
 	private String password;
+	
 	private String username;
 	
 	public User() {

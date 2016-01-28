@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.com.supercloud.cms.model.SCFile;
 
 @Repository
-public interface SCFileRepository extends
-		PagingAndSortingRepository<SCFile, Integer> {
+public interface SCFileRepository extends PagingAndSortingRepository<SCFile, Integer> {
 
 	List<SCFile> findAllByPortfolioId(@Param("id") Integer id);
 

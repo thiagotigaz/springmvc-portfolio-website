@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout/admin">
+<head>
+
+<title th:text="#{experience.page.title}">Experience</title>
+</head>
+<body>
+	<div layout:fragment="content" class="container">
+		<div class="row">
+			<form th:object="${experience}" th:action="@{/admin/experience}"
+				th:method="POST">
+				<div class="col-lg-4">
+					<fieldset>
+						<legend>Experiences</legend>
+						<input th:field="*{id}" type="hidden" hidden="hidden" />
+
+						<div th:if="${#fields.hasAnyErrors()}"
+							class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<p th:text="${#fields.errors()}"></p>
+						</div>
+						
+						<div th:if="${mensagem!=null}"
+							class="alert alert-info alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<p th:text="${mensagem}"></p>
+						</div>
+
+						<div th:if="${mensagem!=null}"
+							class="alert alert-info alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<p th:text="${mensagem}"></p>
+						</div>
+						<div class="form-group">
+							<label>Title</label> <input th:field="*{title}"
+								class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Subtitle</label> <input th:field="*{subtitle}"
+								class="form-control" />
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea th:field="*{description}" rows="3" cols=""
+								class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Type</label> <select class="form-control"
+								th:field="*{experienceTypeEnum}">
+								<option th:value="ACADEMIC" th:text="Academic">Academic</option>
+								<option th:value="PROFESSIONAL" th:text="Professional">Professional</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label>Start Date</label> <input type="text" class="form-control"
+								placeholder="dd/mm/yyyy" th:field="*{startDate}"
+								th:value="${experience.startDate != null ? #calendars.format(experience.startDate, 'dd/MM/yyyy') : ''}" />
+						</div>
+
+						<div class="form-group">
+							<label>End Date</label> <input type="text" class="form-control"
+								placeholder="dd/mm/yyyy" th:field="*{endDate}"
+								th:value="${experience.endDate != null ? #calendars.format(experience.endDate, 'dd/MM/yyyy') : ''}" />
+						</div>
+
+						<button type="submit" class="btn btn-primary pull-right"
+							th:text="*{id==null?'Add':'Edit'}">Add</button>
+					</fieldset>
+
+
+				</div>
+			</form>
+			<div class="col-lg-8" th:unless="${#lists.isEmpty(allExperiences)}">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th th:text="Title">Title</th>
+							<th th:text="Subtitle">Subtitle</th>
+							<th th:text="Description">Description</th>
+							<th th:text="StartDate">Start Date</th>
+							<th th:text="EndDate">End Date</th>
+							<th th:text="Type">Type</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="e : ${allExperiences}">
+							<td class=""><a href="#"
+								th:href="@{/admin/experience/{id}(id=${e.id})}"
+								th:text="${e.title}">Experience Title</a></td>
+							<td class=""><a href="#"
+								th:href="@{/admin/experience/{id}(id=${e.id})}"
+								th:text="${e.subtitle}">Experience Title</a></td>
+							<td class="" th:text="${#strings.abbreviate(e.description,150)}">yes</td>
+							<td class=""
+								th:text="${#calendars.format(e.startDate, 'dd/MM/yyyy')}">yes</td>
+							<td class="" th:text="${e.endDate != null ? #calendars.format(e.endDate, 'dd/MM/yyyy') : '-'}">yes</td>
+							<td class="" th:text="${e.experienceTypeEnum}">yes</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

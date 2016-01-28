@@ -3,6 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
 	layout:decorator="layout/admin">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <title th:text="#{portfolio.page.title}">Portfolio</title>
 </head>
@@ -10,7 +11,7 @@
 	<div layout:fragment="content" class="container">
 		<div class="row">
 			<form th:object="${portfolio}" th:action="@{/admin/portfolio}"
-				th:method="*{id==null?'POST':'PUT'}">
+				th:method="POST">
 				<div class="col-lg-4">
 					<fieldset>
 						<legend>Portfolios</legend>
@@ -55,8 +56,7 @@
 									th:value="${t.name}" th:text="${t.name}">JSF</option>
 							</select>
 						</div>
-						<button type="submit" th:name="*{id==null?'save':'edit'}"
-							class="btn btn-primary pull-right"
+						<button type="submit" class="btn btn-primary pull-right"
 							th:text="*{id==null?'Add':'Edit'}">Add</button>
 					</fieldset>
 
@@ -92,9 +92,10 @@
 						</tbody>
 					</table>
 				</div>
+				
 				<!-- The file upload form used as target for the file upload widget -->
 				<input th:if="${portfolio.id!=null}" id="fileinput" type="file"
-					accept="image/*" multiple="true" name="files"
+					accept="image/*" multiple="true" name="file"
 					th:attr="data-upload-url=@{/admin/portfolio/{id}/upload(id=${portfolio.id})}" />
 				<div id="images" class="row">
 					<div class="col-lg-4 img-container"
@@ -117,7 +118,6 @@
 							th:alt="#{portfolio.image.delete}">
 							<span class="glyphicon glyphicon-trash" />
 						</button>
-
 					</div>
 				</div>
 
@@ -163,8 +163,6 @@
 					        					'<button class="portfolio-setcover-image-btn portfolio-btn-hidden hidden-lg btn btn-success" type="button" title="Set Cover Image" alt="Set Cover Image" value="/admin/portfolio/image/setcover/'+response.portfolioId+'/'+response.fileId+'"><span class="glyphicon glyphicon-picture"></span></button>'+
 					        					'<button class="portfolio-delete-image-btn portfolio-btn-hidden btn btn-danger hidden-lg" type="button" value="/admin/portfolio/image/'+response.portfolioId+'/'+response.fileId+'"><span class="glyphicon glyphicon-trash"/></button>'+
 					        					'</div>');
-					        /* $(this).fileinput('clear');
-					        $(this).fileinput('unlock'); */
 					    });	
 					    
 					    // Handle image hover, display delete button
@@ -181,18 +179,6 @@
 					        }
 					    },'.img-container');
 					    
-					    /* $('#images').on("mouseover", ".img-container", function(e) {
-					    	var btn = $(this).children(".portfolio-btn-hidden");
-					    	btn.fadeIn( 1000 );
-					    	btn.removeClass('hidden-lg');
-					    });
-
-					    $('#images').on("mouseleave", ".img-container", function(e) {
-					    	//stuff to do on mouse leave
-				        	$(this).children(".portfolio-btn-hidden").addClass('hidden-lg');
-					    }); */
-					    
-					    
 					    // Handle delete button click, ajax call to delete image
 					    $('#images').on('click', '.portfolio-btn-hidden', function () {
 					    	var btn = $(this);
@@ -208,6 +194,7 @@
 					    		    }
 						    	});
 					    	}
+					    	
 							if(btn.hasClass("portfolio-setcover-image-btn")){
 								$.ajax({
 					    		    url: actionUrl,
