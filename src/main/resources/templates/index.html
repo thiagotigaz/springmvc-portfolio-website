@@ -18,6 +18,8 @@
 <!-- Important external stylesheets -->
 <link rel="stylesheet" th:href="@{/css/glyphicons.css}" href="../static/css/glyphicons.css" />
 <link rel="stylesheet" th:href="@{/css/owl.carousel.css}" href="../static/css/owl.carousel.css" />
+<link rel="stylesheet" th:href="@{/css/owl.carousel.css}" href="../static/css/owl.transitions.css" />
+    <link rel="stylesheet" th:href="@{/css/owl.theme.css}" href="../static/css/owl.theme.css" />
 <link rel="stylesheet" th:href="@{/css/fontello.css}" href="../static/css/fontello.css" />
 <link rel="stylesheet" th:href="@{/css/jquery.fancybox.css}" href="../static/css/jquery.fancybox.css" type="text/css" media="screen" />
 <link rel="stylesheet" th:href="@{/css/jquery.fs.wallpaper.css}" href="../static/css/jquery.fs.wallpaper.css" type="text/css" media="all" />
@@ -117,14 +119,14 @@
 				<div>
 					<!-- Start of Slide 1 -->
 					<div class="button-box">
-						<h4>Java Engineer</h4>
+						<h4>Java Architect</h4>
 					</div>
 				</div>
 
 				<div>
 					<!-- Start of Slide 2 -->
 					<div class="button-box">
-						<h4>Specialized in Cloud Computing and Android</h4>
+						<h4>Specialized in Cloud Computing and AWS</h4>
 					</div>
 				</div>
 
@@ -229,9 +231,10 @@
 					<h3 class="fadeInRight animated">Java Engineer / Specialized in Cloud Computing with Android</h3>
 					<p></p>
 
-					<p>Thiago Pinto de Lima, Java Software Engineer, works with Java Web Applications and Android, have knowledge in technologies such as JavaEE, JSF, Primefaces, Hibernate, Bootstrap, Jquery, REST
-						Services (Spring / Jax-RS), Spring MVC (Thymeleaf), Maven, Gradle and Android, also have experience with Git, SVN and SCRUM.</p>
+					<p>Thiago Pinto de Lima, Java Software Architect, works with Java Web Applications, AWS and Android, have knowledge in technologies such as AWS, Java, AngularJS, JSF, Primefaces, Hibernate, Bootstrap, Jquery, REST
+						(Spring / Jax-RS), Spring MVC (Thymeleaf), Spring Boot, Maven, Gradle and Android, also have experience with Git, SVN and SCRUM.</p>
 
+                    <img th:src="@{/img/aws.png}" src="/static/img/aws.png" />
 				</div>
 				<!-- End of Content -->
 
@@ -280,7 +283,7 @@
 						</div>
 
 						<div class="one_fourth_last centered skill">
-							<input class="knob" data-width="100%" data-fgColor="#ffffff" data-skin="cr3ativ" data-thickness=".2" value="50" data-readOnly="true" />
+							<input class="knob" data-width="100%" data-fgColor="#ffffff" data-skin="cr3ativ" data-thickness=".2" value="90" data-readOnly="true" />
 							<h3>AWS</h3>
 						</div>
 						<!-- End of 3 rows -->
@@ -294,7 +297,7 @@
 
 						<div class="one_fourth centered skill">
 							<input class="knob" data-width="100%" data-fgColor="#ffffff" data-skin="cr3ativ" data-thickness=".2" value="90" data-readOnly="true" />
-							<h3>Unix/Linux</h3>
+							<h3>Unix/Linux/Docker</h3>
 						</div>
 
 						<div class="one_fourth centered skill">
@@ -304,7 +307,7 @@
 
 						<div class="one_fourth_last centered skill">
 							<input class="knob" data-width="100%" data-fgColor="#ffffff" data-skin="cr3ativ" data-thickness=".2" value="85" data-readOnly="true" />
-							<h3>Css/Bootstrap/Jquery</h3>
+							<h3>AngularJS/Css/Bootstrap/Jquery</h3>
 						</div>
 						<!-- End of 2nd 3 rows -->
 
@@ -497,8 +500,9 @@
 
 	<!--Loading Scripts -->
 	<!-- First we will load jQuery -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 	<!-- Now we load the JS files for the fancy things on the page -->
+	<script type="text/javascript" th:src="@{/js/jquery-1.12.0.min.js}" src="../static/js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/owl.carousel.min.js}" src="../static/js/owl.carousel.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.fitvids.js}" src="../static/js/jquery.fitvids.js"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.fancybox.pack.js?v=2.1.5}" src="../static/js/jquery.fancybox.pack.js?v=2.1.5"></script>

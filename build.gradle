@@ -3,7 +3,7 @@ buildscript {
     springBootVersion = '1.3.1.RELEASE'
     springVersion = '4.2.4.RELEASE'
     hibernateVersion = '5.0.7.Final'
-    postgresVersion = '9.4.1207.jre7'
+    postgresVersion = '9.4.1209.jre7'
   }
     repositories {
         maven { url "http://repo.spring.io/libs-release" }

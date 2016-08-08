@@ -179,14 +179,14 @@
 
             //Basic Speeds - set your speeds in milliseconds here!
             slideSpeed: 400,
-            paginationSpeed: 800,
+            paginationSpeed: 500,
             rewindSpeed: 1000,
 
             //Autoplay
             autoPlay: true,
-            stopOnHover: true
+            stopOnHover: false
 
-        })
+        });
         //owlCarousel - these settings are for the client logos
         $(".owl-example").owlCarousel({
 
@@ -263,7 +263,7 @@
             startDragging: false,
             afterLazyLoad: false
 
-        })
+        });
 
         //Contact Form
         $(document).on('submit', 'form#contact_form', function (e) {

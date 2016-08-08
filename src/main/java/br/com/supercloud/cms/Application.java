@@ -27,7 +27,7 @@ public class Application extends SpringBootServletInitializer {
 	private static final String MAX_REQUEST_SIZE = "15MB";
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringAdpplication.run(Application.class, args);
 	}
 
 	@Override
