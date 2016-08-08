@@ -7,6 +7,6 @@ COPY ./thiagosc /home/thiago
 COPY ./build/libs/springmvc-portfolio-website-1.0.jar /home/thiago/app.jar
 WORKDIR /home/thiago
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD ["java", "-jar", "app.jar"]
