@@ -130,6 +130,10 @@ a img, a, img {
 	filter: alpha(opacity = 80); /* For IE8 and earlier */
 }
 
+#video_element {
+	background-color: #FFFFFF;
+}
+
 input {
 	-webkit-appearance: none;
 	border-radius: 0;

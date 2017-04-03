@@ -1,20 +1,50 @@
+### Intellij ###
+**/.idea/
+
+## File-based project format:
+**/*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+**/out/
+
+# mpeltonen/sbt-idea plugin
+**/.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+**/*.iml
+**/modules.xml
+**/.idea/misc.xml
+**/*.ipr
+
+
 # Folder #
-build/
-bin
+**/build/
+**/bin
 # OS generated files #
 ######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+**/.DS_Store
+**/.DS_Store?
+**/._*
+**/.Spotlight-V100
+**/.Trashes
+**/ehthumbs.db
+**/Thumbs.db
+**/.settings
 
 src/main/resources/mail.properties
 src/main/resources/application-release.properties
 
-.gradle
+**/.gradle
 
 # Ignore Gradle GUI config
-gradle-app.setting
+**/gradle-app.setting

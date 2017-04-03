@@ -1,12 +1,10 @@
 package br.com.supercloud.cms;
 
-import javax.servlet.MultipartConfigElement;
-
+import br.com.supercloud.cms.model.User;
+import br.com.supercloud.cms.util.AuditorAwareImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.MultipartConfigFactory;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -15,24 +13,18 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import br.com.supercloud.cms.model.User;
-import br.com.supercloud.cms.util.AuditorAwareImpl;
+import javax.servlet.MultipartConfigElement;
 
 @SpringBootApplication
 @EnableCaching
 @EnableJpaRepositories
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
-public class Application extends SpringBootServletInitializer {
+public class Application  {
 
 	private static final String MAX_REQUEST_SIZE = "15MB";
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(Application.class);
 	}
 
 	@Bean

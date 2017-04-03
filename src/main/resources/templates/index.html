@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -19,7 +19,7 @@
 <link rel="stylesheet" th:href="@{/css/glyphicons.css}" href="../static/css/glyphicons.css" />
 <link rel="stylesheet" th:href="@{/css/owl.carousel.css}" href="../static/css/owl.carousel.css" />
 <link rel="stylesheet" th:href="@{/css/owl.carousel.css}" href="../static/css/owl.transitions.css" />
-    <link rel="stylesheet" th:href="@{/css/owl.theme.css}" href="../static/css/owl.theme.css" />
+<link rel="stylesheet" th:href="@{/css/owl.theme.default.css}" href="../static/css/owl.theme.default.css" />
 <link rel="stylesheet" th:href="@{/css/fontello.css}" href="../static/css/fontello.css" />
 <link rel="stylesheet" th:href="@{/css/jquery.fancybox.css}" href="../static/css/jquery.fancybox.css" type="text/css" media="screen" />
 <link rel="stylesheet" th:href="@{/css/jquery.fs.wallpaper.css}" href="../static/css/jquery.fs.wallpaper.css" type="text/css" media="all" />
@@ -87,7 +87,6 @@
 						<li><a href="#About">About</a></li>
 						<li><a href="#Skills">Skills</a></li>
 						<li><a href="#CV">CV / Resume</a></li>
-						<!-- <li><a href="#Testimonials">Testimonials</a></li> -->
 						<li th:unless="${#lists.isEmpty(allPortfolios)}"><a href="#Portfolio">Portfolio</a></li>
                     	<li><a href="http://blog.supercloud.com.br" target="_blank">Blog</a></li>
 						<li><a href="#Contact">Contact Me</a></li>
@@ -110,32 +109,26 @@
 		<!-- Start of Main Title + Intro -->
 		<div class="huge-title">
 
-			<img src="img/thiago.jpg" alt="Thiago Lima" class="headshot wow tada" data-wow-delay="3s" data-wow-offset="80" data-wow-duration="1s" />
-			<h1 class="wow bounceInDown colorBlack" data-wow-offset="80" data-wow-duration="3s">Thiago Lima</h1>
+			<img src="img/thiago.jpg" alt="Thiago Lima" class="headshot wow tada" data-wow-delay="1.5s" data-wow-offset="80" data-wow-duration="1s" />
+			<h1 class="wow bounceInDown colorBlack" data-wow-offset="80" data-wow-duration="1.5s">Thiago Lima</h1>
 
 			<!-- Start of Owl Testimonial Carousel -->
 			<div class="testimonials owl-carousel">
 
-				<div>
 					<!-- Start of Slide 1 -->
-					<div class="button-box">
-						<h4>Java Architect</h4>
+					<div class="owl-item">
+						<h4>Java Cloud Architect</h4>
 					</div>
-				</div>
 
-				<div>
 					<!-- Start of Slide 2 -->
-					<div class="button-box">
+					<div class="owl-item">
 						<h4>Specialized in Cloud Computing and AWS</h4>
 					</div>
-				</div>
 
-				<div>
 					<!-- Start of Slide 3 -->
-					<div class="button-box">
+					<div class="owl-item">
 						<h4>Startup Entrepreneur</h4>
 					</div>
-				</div>
 
 			</div>
 			<!-- End of Owl Testimonial Carousel -->
