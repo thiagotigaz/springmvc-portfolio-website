@@ -1,6 +1,14 @@
 package br.com.supercloud.cms.util;
 
-import java.awt.Color;
+import org.imgscalr.Scalr;
+import org.imgscalr.Scalr.Method;
+import org.imgscalr.Scalr.Mode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,15 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-
-import javax.imageio.ImageIO;
-
-import org.imgscalr.Scalr;
-import org.imgscalr.Scalr.Method;
-import org.imgscalr.Scalr.Mode;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 /**
  * This class provides a simple implementation to store binary data on the file
@@ -50,18 +49,6 @@ public class FileUtil {
 	}
 
 	/**
-	 * This method returns true if the specified fileName has binary data stored
-	 * on the file system.
-	 * 
-	 * @param v
-	 * @return
-	 */
-	public boolean hasFile(String fileName) {
-		Path source = getFilePath(fileName);
-		return Files.exists(source);
-	}
-
-	/**
 	 * This method copies the binary data for the given fileName to the provided
 	 * output stream. The caller is responsible for ensuring that the specified
 	 * file has binary data associated with it. If not, this method will throw a
@@ -79,21 +66,6 @@ public class FileUtil {
 		}
 
 		Files.copy(source, out);
-	}
-
-	/**
-	 * This method reads all of the data in the provided InputStream and stores
-	 * it on the file system.
-	 * 
-	 * @param fileName
-	 * @param is
-	 * @throws IOException
-	 */
-	public void saveFileData(String fileName, InputStream is) throws IOException {
-
-		Path target = getFilePath(fileName);
-
-		Files.copy(is, target, StandardCopyOption.REPLACE_EXISTING);
 	}
 
 	private static final int WIDTH = 1600;

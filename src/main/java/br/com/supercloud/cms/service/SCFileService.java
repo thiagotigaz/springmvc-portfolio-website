@@ -17,22 +17,21 @@
  */
 package br.com.supercloud.cms.service;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import br.com.supercloud.cms.model.Portfolio;
 import br.com.supercloud.cms.model.SCFile;
 import br.com.supercloud.cms.repository.PortfolioRepository;
 import br.com.supercloud.cms.repository.SCFileRepository;
 import br.com.supercloud.cms.util.FileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SCFileService {
@@ -53,30 +52,27 @@ public class SCFileService {
 
 			fileUtil.copyFileData(file.getId() + (thumb ? "_thumb" : "") + file.getExtension(), response.getOutputStream());
 		} else {
-			response.sendError(404);
+			response.sendError(HttpStatus.NOT_FOUND.value());
 		}
 	}
 
 	@Transactional
 	public SCFile uploadPortfolioFile(Integer idPortfolio, MultipartFile portfolioFile) throws IOException {
 		Portfolio portfolio = portfolioRepo.findOne(idPortfolio);
-
 		List<SCFile> images = portfolio.getImages();
-
 		if (images == null) {
 			images = new ArrayList<SCFile>();
 			portfolio.setImages(images);
 		}
 
 		SCFile savedFile = saveFile(portfolioFile, portfolio);
-
 		images.add(savedFile);
 		portfolio.setCoverImage(savedFile);
-
 		portfolioRepo.save(portfolio);
 
 		return savedFile;
 	}
+
 
 	private SCFile saveFile(MultipartFile file, Portfolio portfolio) throws IOException {
 		SCFile scFile = new SCFile();

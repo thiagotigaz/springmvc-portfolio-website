@@ -1,12 +1,14 @@
 package br.com.supercloud.cms.controller;
 
-import java.io.IOException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-
+import br.com.supercloud.cms.model.Portfolio;
+import br.com.supercloud.cms.model.SCFile;
+import br.com.supercloud.cms.model.Tag;
+import br.com.supercloud.cms.model.pojo.UploadResponse;
+import br.com.supercloud.cms.repository.PortfolioRepository;
+import br.com.supercloud.cms.repository.TagRepository;
+import br.com.supercloud.cms.service.PortfolioService;
+import br.com.supercloud.cms.service.SCFileService;
+import br.com.supercloud.cms.util.Mappings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +22,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
 
-import br.com.supercloud.cms.model.Portfolio;
-import br.com.supercloud.cms.model.SCFile;
-import br.com.supercloud.cms.model.Tag;
-import br.com.supercloud.cms.model.pojo.UploadResponse;
-import br.com.supercloud.cms.repository.PortfolioRepository;
-import br.com.supercloud.cms.repository.TagRepository;
-import br.com.supercloud.cms.service.PortfolioService;
-import br.com.supercloud.cms.service.SCFileService;
-import br.com.supercloud.cms.util.Mappings;
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class PortfolioController {
@@ -50,12 +48,6 @@ public class PortfolioController {
 	public List<String> allTagsName() {
 		return tagRepo.findAllTagNames();
 	}
-
-//	@Transactional
-//	@ModelAttribute("allPortfolios")
-//	public List<Portfolio> allPortfoliosName() {
-//		return portfolioRepo.findAll();
-//	}
 
 	@Transactional
 	@RequestMapping(value = "/admin/portfolio", method = RequestMethod.GET)

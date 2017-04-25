@@ -1,13 +1,11 @@
 package br.com.supercloud.cms.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-
+import br.com.supercloud.cms.model.ExperienceTypeEnum;
+import br.com.supercloud.cms.model.Portfolio;
+import br.com.supercloud.cms.model.pojo.Mail;
+import br.com.supercloud.cms.repository.ExperienceRepository;
+import br.com.supercloud.cms.repository.PortfolioRepository;
+import br.com.supercloud.cms.service.SCFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
@@ -19,12 +17,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.supercloud.cms.model.ExperienceTypeEnum;
-import br.com.supercloud.cms.model.Portfolio;
-import br.com.supercloud.cms.model.pojo.Mail;
-import br.com.supercloud.cms.repository.ExperienceRepository;
-import br.com.supercloud.cms.repository.PortfolioRepository;
-import br.com.supercloud.cms.service.SCFileService;
+import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class PublicController {
@@ -46,18 +44,13 @@ public class PublicController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-
 		List<Portfolio> result = portfolioRepo.findAll();
 		int size = result.size();
-
 		if (size != 0) {
 			int numRows = (size % 3 == 0 && size > 3) ? (size / 3) : (size / 3) + 1;
-
 			List<List<Portfolio>> portfolios = new ArrayList<List<Portfolio>>();
-
 			for (int i = 0; i < numRows; i++) {
 				List<Portfolio> row = new ArrayList<Portfolio>();
-
 				int numColumns = 3;
 
 				// last row
@@ -68,16 +61,13 @@ public class PublicController {
 				for (int j = 0; j < numColumns; j++) {
 					row.add(result.get(i == 0 ? j : (i * 3) + j));
 				}
-
 				portfolios.add(row);
 			}
 
 			model.addAttribute("allPortfolios", portfolios);
-
 		}
-
-		model.addAttribute("allAcademic", experienceRepo.findAllByExperienceTypeEnum(ExperienceTypeEnum.ACADEMIC));
-		model.addAttribute("allProfessional", experienceRepo.findAllByExperienceTypeEnum(ExperienceTypeEnum.PROFESSIONAL));
+		model.addAttribute("allAcademic", experienceRepo.findAllByExperienceTypeEnumOrderByStartDateDesc(ExperienceTypeEnum.ACADEMIC));
+		model.addAttribute("allProfessional", experienceRepo.findAllByExperienceTypeEnumOrderByStartDateDesc(ExperienceTypeEnum.PROFESSIONAL));
 
 		return "index";
 	}
@@ -85,7 +75,6 @@ public class PublicController {
 	@Transactional
 	@RequestMapping("/portfolio")
 	public String portfolios(Model model) {
-
 		model.addAttribute("allPortfolios", portfolioRepo.findAll());
 
 		return "portfolio";
@@ -94,7 +83,6 @@ public class PublicController {
 	@Transactional
 	@RequestMapping("/portfolio/{portfolioId}")
 	public String portfolioDetail(@PathVariable("portfolioId") Integer portfolioId, Model model) {
-
 		model.addAttribute("portfolio", portfolioRepo.findOne(portfolioId));
 		model.addAttribute("allPortfolios", portfolioRepo.findAll());
 
@@ -103,7 +91,6 @@ public class PublicController {
 
 	@RequestMapping(value = "/file/{fileId}", method = RequestMethod.GET)
 	public void getFile(@PathVariable("fileId") Integer fileId, @Param("thumb") boolean thumb, HttpServletResponse response) {
-
 		try {
 			fileService.getPortfolioFile(fileId, thumb, response);
 		} catch (IOException e) {
@@ -114,7 +101,6 @@ public class PublicController {
 
 	@RequestMapping(value = "/mail/send", method = RequestMethod.POST)
 	public String sendEmail(@Valid Mail email) {
-
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
 
 		mailMessage.setTo(FROM);

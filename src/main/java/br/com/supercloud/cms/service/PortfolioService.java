@@ -1,15 +1,14 @@
 package br.com.supercloud.cms.service;
 
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
-
 import br.com.supercloud.cms.model.Portfolio;
 import br.com.supercloud.cms.repository.PortfolioRepository;
 import br.com.supercloud.cms.repository.SCFileRepository;
 import br.com.supercloud.cms.repository.TagRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
+
+import javax.transaction.Transactional;
 
 @Service
 public class PortfolioService {
@@ -42,7 +41,6 @@ public class PortfolioService {
 		}
 
 		portfolioRepo.save(portfolio);
-
 	}
 
 }

@@ -1,10 +1,9 @@
 package br.com.supercloud.cms.util;
 
+import br.com.supercloud.cms.model.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import br.com.supercloud.cms.model.User;
 
 public class AuditorAwareImpl implements AuditorAware<User> {
 

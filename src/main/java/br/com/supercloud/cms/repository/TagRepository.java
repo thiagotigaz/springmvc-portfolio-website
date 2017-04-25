@@ -1,13 +1,12 @@
 package br.com.supercloud.cms.repository;
 
-import java.util.List;
-
+import br.com.supercloud.cms.model.Tag;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import br.com.supercloud.cms.model.Tag;
+import java.util.List;
 
 @Repository
 public interface TagRepository extends PagingAndSortingRepository<Tag, Integer> {
