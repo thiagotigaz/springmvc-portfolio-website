@@ -539,7 +539,7 @@ h5 {
 	text-align: justify;
 }
 
-.whitecontainer .border {
+.whitecontainer .border, .hero .border  {
 	border-left: 5px solid rgba(0, 0, 0, 0.3);
 }
 

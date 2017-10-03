@@ -163,30 +163,19 @@
         //ScrolltoTop
         $("#toTop").scrollToTop(1000);
 
-        //owlCarousel - these settings are for the testimonials and sub heading under your name title at the top
-        $(".testimonials").owlCarousel({
-
-            // Most important owl features
+        $('.testimonials').owlCarousel({
             items: 1,
-            itemsCustom: false,
-            itemsDesktop: [1199, 1],
-            itemsDesktopSmall: [980, 1],
-            itemsTablet: [768, 1],
-            itemsTabletSmall: false,
-            itemsMobile: [479, 1],
-            singleItem: false,
-            itemsScaleUp: false,
-
-            //Basic Speeds - set your speeds in milliseconds here!
-            slideSpeed: 400,
-            paginationSpeed: 500,
-            rewindSpeed: 1000,
-
-            //Autoplay
-            autoPlay: true,
-            stopOnHover: false
-
+            margin:10,
+            nav:false,
+            dots: false,
+            autoplay:true,
+            autoplayTimeout:3000,
+            autoplayHoverPause:true,
+            loop: true,
+            // smartSpeed: 500,
+            autoplaySpeed: 500,
         });
+
         //owlCarousel - these settings are for the client logos
         $(".owl-example").owlCarousel({
 
