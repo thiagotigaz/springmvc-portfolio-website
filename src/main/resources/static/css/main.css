@@ -1718,6 +1718,10 @@ Contact Form Styling
 	text-align: left;
 }
 
+#contact_form > p > textarea {
+	color: #262B30;
+}
+
 textarea {
 	color: #262B30;
 	background-color: #FFFFFF;
@@ -2291,3 +2295,4 @@ Portfolio Page Styling
 	background-color: #337ab7;
 	border-radius: 4px;
 }
+
