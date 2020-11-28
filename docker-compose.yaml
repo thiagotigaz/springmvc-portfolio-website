@@ -1,0 +1,25 @@
+version: "3"
+networks:
+  supercloud_proxy:
+    external: true
+  supercloud_backend:
+    external: true
+services:
+  thiagosc:
+    image: openjdk:8-jdk-alpine
+    environment:
+      - THIAGOSC_DB
+      - THIAGOSC_DB_USER
+      - THIAGOSC_DB_PASS
+      - THIAGOSC_FILES_PATH
+      - SPRING_PROFILES_ACTIVE=container
+    entrypoint:
+      - java
+      - -Djava.security.egd=file:/dev/./urandom
+      - -jar
+      - /home/thiagosc/springmvc-portfolio-website-1.1.jar
+    volumes:
+      - /data/supercloud/data/thiagosc:/home/thiagosc
+    networks:
+      - supercloud_proxy
+      - supercloud_backend
