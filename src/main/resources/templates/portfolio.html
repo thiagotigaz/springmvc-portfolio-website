@@ -24,7 +24,7 @@
 <link href="css/main.css" th:href="@{/css/main.css}" rel="stylesheet" type="text/css" />
 
 <!-- Finally we will load the font from Google Fonts -->
-<link href="http://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,200,300,500,600,700,800,900" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -84,7 +84,7 @@
 						<li><a href="/#Skills">Skills</a></li>
 						<li><a href="/#CV">CV / Resume</a></li>
 						<li><a href="/#Portfolio">Portfolio</a></li>
-						<li><a href="http://blog.supercloud.com.br" target="_blank">Blog</a></li>
+						<li><a href="https://limascloud.com" target="_blank">Blog</a></li>
 						<li><a href="/#Contact">Contact Me</a></li>
 					</ul>
 				</div>
@@ -124,8 +124,10 @@
 								<div th:id="carousel-portfolio-images+${p.id}" class="carousel slide" data-ride="carousel">
 									<!-- Indicators -->
 									<ol class="carousel-indicators">
-										<li th:each="image, status : ${p.images}" th:class="${status.index==0?'active':''}" data-th-attr="data-target='#carousel-portfolio-images'+${p.id},data-slide-to=${status.index}"
-											data-target="#carousel-portfolio-images" th:attr="data-slide-to=${status.index}"></li>
+										<li th:each="image, status : ${p.images}"
+											th:class="${status.index==0?'active':''}"
+											th:attr="data-target='#carousel-portfolio-images'+${p.id},data-slide-to=${status.index}">
+										</li>
 									</ol>
 
 									<!-- Wrapper for slides -->
@@ -157,7 +159,7 @@
 	<!-- End of Wrapper -->
 	<!--Loading Scripts -->
 	<!-- First we will load jQuery -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<!-- Now we load the JS files for the fancy things on the page -->
 	<script type="text/javascript" th:src="@{/js/owl.carousel.min.js}" src="../static/js/owl.carousel.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/jquery.fitvids.js}" src="../static/js/jquery.fitvids.js"></script>
