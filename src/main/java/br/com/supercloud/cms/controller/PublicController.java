@@ -27,20 +27,20 @@ import java.util.List;
 @Controller
 public class PublicController {
 
-	@Autowired
-	private PortfolioRepository portfolioRepo;
-
-	@Autowired
-	private ExperienceRepository experienceRepo;
-
-	@Autowired
-	private SCFileService fileService;
-
-	@Autowired
-	private JavaMailSender javaMailSender;
+	private final PortfolioRepository portfolioRepo;
+	private final ExperienceRepository experienceRepo;
+	private final SCFileService fileService;
+	private final JavaMailSender javaMailSender;
 
 	@Value("${mail.from}")
 	private String FROM;
+
+	public PublicController(PortfolioRepository portfolioRepo, ExperienceRepository experienceRepo, SCFileService fileService, JavaMailSender javaMailSender) {
+		this.portfolioRepo = portfolioRepo;
+		this.experienceRepo = experienceRepo;
+		this.fileService = fileService;
+		this.javaMailSender = javaMailSender;
+	}
 
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -48,9 +48,9 @@ public class PublicController {
 		int size = result.size();
 		if (size != 0) {
 			int numRows = (size % 3 == 0 && size > 3) ? (size / 3) : (size / 3) + 1;
-			List<List<Portfolio>> portfolios = new ArrayList<List<Portfolio>>();
+			List<List<Portfolio>> portfolios = new ArrayList<>();
 			for (int i = 0; i < numRows; i++) {
-				List<Portfolio> row = new ArrayList<Portfolio>();
+				List<Portfolio> row = new ArrayList<>();
 				int numColumns = 3;
 
 				// last row
@@ -80,12 +80,10 @@ public class PublicController {
 		return "portfolio";
 	}
 
-	@Transactional
 	@RequestMapping("/portfolio/{portfolioId}")
 	public String portfolioDetail(@PathVariable("portfolioId") Integer portfolioId, Model model) {
-		model.addAttribute("portfolio", portfolioRepo.findOne(portfolioId));
+		model.addAttribute("portfolio", portfolioRepo.findById(portfolioId).orElse(new Portfolio()));
 		model.addAttribute("allPortfolios", portfolioRepo.findAll());
-
 		return "portfolio";
 	}
 

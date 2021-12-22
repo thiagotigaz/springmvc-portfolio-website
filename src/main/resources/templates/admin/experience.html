@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	layout:decorator="layout/admin">
+	  th:replace="~{layout/admin :: layout(~{::#content})}">
 <head>
 
 <title th:text="#{experience.page.title}">Experience</title>
 </head>
 <body>
-	<div layout:fragment="content" class="container">
+	<div id="content" class="container">
 		<div class="row">
 			<form th:object="${experience}" th:action="@{/admin/experience}"
 				th:method="POST">

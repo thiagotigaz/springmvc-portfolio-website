@@ -2,7 +2,6 @@ package br.com.supercloud.cms.util;
 
 import br.com.supercloud.cms.model.User;
 import br.com.supercloud.cms.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class JPAUserDetailsService implements UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepo;
+	private final UserRepository userRepo;
+
+	public JPAUserDetailsService(UserRepository userRepo) {
+		this.userRepo = userRepo;
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -23,10 +25,8 @@ public class JPAUserDetailsService implements UserDetailsService {
 			for (int i = 0; i < user.getRoles().size(); i++) {
 				roles[i] = user.getRoles().get(i).getName();
 			}
-
 			user.setAuthorities(AuthorityUtils.createAuthorityList(roles));
 		}
-		
 		return user;
 	}
 

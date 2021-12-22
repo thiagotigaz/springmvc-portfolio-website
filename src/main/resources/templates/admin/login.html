@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout/login">
+      th:replace="~{layout/login :: layout(~{::#content})}">
 <head>
 <title th:text="#{login.page.title}">Login - Management Area</title>
 </head>
 <body>
-	<div layout:fragment="content" class="container">
+	<div id="content" class="container">
 		<div class="row">
 			<div class="col-lg-4 col-lg-offset-4">
 				<div class="form-signin">

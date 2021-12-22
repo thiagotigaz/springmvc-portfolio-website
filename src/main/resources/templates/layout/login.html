@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+	  th:fragment="layout (content)">
 <head>
 <title>Layout</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
@@ -14,9 +14,9 @@
 </head>
 <body>
 	<div class="container wrap">
-		<div layout:fragment="content"></div>
+		<div th:replace="${content}"></div>
 	</div>
-	<footer class="footer" layout:fragment="footer">
+	<footer class="footer" th:fragment="footer">
 		<div th:replace="/layout/fragments/credits"></div>
 	</footer>
 </body>

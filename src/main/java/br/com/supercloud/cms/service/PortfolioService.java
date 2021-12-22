@@ -33,7 +33,7 @@ public class PortfolioService {
 		}
 
 		if (portfolio.getCoverImage() != null) {
-			portfolio.setCoverImage(fileRepo.findOne(portfolio.getCoverImage().getId()));
+			portfolio.setCoverImage(fileRepo.findById(portfolio.getCoverImage().getId()).orElse(null));
 		}
 
 		if (portfolio.getImages() == null) {

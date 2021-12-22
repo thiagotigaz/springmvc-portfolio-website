@@ -14,6 +14,7 @@ place where you would like to store database data on your system. eg:
 `docker run --name postgres -d -p 5432:5432 -v $DATABASE_DATA:/var/lib/postgresql/data/pgdata -e 
 PGDATA=/var/lib/postgresql/data/pgdata -e POSTGRES_PASSWORD=admin postgres:latest`
 
+`docker run --name postgres-supercloud --rm -p 5432:5432 -e POSTGRES_USER=thiagosc -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=thiagosc -v $(pwd)/db/restore:/docker-entrypoint-initdb.d postgres:11-alpine`
 Here you can find examples for following technology:
 
 * Template structure using thymeleaf 3.x

@@ -21,11 +21,11 @@ public class IpController {
 
     @GetMapping
     public ResponseEntity<String> getIp() {
-        return new ResponseEntity(ipHolderService.getIp(), HttpStatus.OK);
+        return new ResponseEntity<String>(ipHolderService.getIp(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity setIp(HttpServletRequest request) {
+    public ResponseEntity<String> setIp(HttpServletRequest request) {
         String header = request.getHeader("X-FORWARDED-FOR");
         if (!StringUtils.isEmpty(header)) {
             ipHolderService.setIp(header);
