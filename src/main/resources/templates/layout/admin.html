@@ -33,14 +33,14 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div th:replace="/layout/fragments/admin/header :: header"></div>
+		<div th:replace="~{layout/fragments/header}"></div>
 		<div class="container">
 			<div th:replace="${content}"></div>
 		</div>
 		<div class="push"></div>
 	</div>
 	<div id="footer" th:fragment="footer">
-		<footer th:replace="/layout/fragments/credits"></footer>
+		<footer th:replace="~{layout/fragments/credits}"></footer>
 	</div>
 </body>
 </html>
