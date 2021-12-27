@@ -317,7 +317,7 @@ COPY public.t_tag (id, name) FROM stdin;
 --
 
 COPY public.t_user (id, created_by_id, created_date, last_modified_by_id, last_modified_date, dob, email, name, password, username) FROM stdin;
-1	1	\N	1	\N	1989-10-31	thiagotigaz@gmail.com	Thiago Lima	82ac6vww	thiago
+1	1	\N	1	\N	1989-10-31	thiagotigaz@gmail.com	Thiago Lima	bcryptpass	thiago
 \.
 
 
