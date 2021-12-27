@@ -18,47 +18,48 @@ import javax.validation.Valid;
 @Controller
 public class ExperienceController {
 
-	@Autowired
-	private ExperienceRepository experienceRepo;
+    private final ExperienceRepository experienceRepo;
 
-	@ModelAttribute("allExperiences")
-	public Iterable<Experience> allTagsName() {
-		return experienceRepo.findAll();
-	}
+    public ExperienceController(ExperienceRepository experienceRepo) {
+        this.experienceRepo = experienceRepo;
+    }
 
-	@RequestMapping(value = "/admin/experience", method = RequestMethod.GET)
-	public String experiencesAdmin(Experience experience, Model model) {
-		return "admin/experience";
-	}
+    @ModelAttribute("allExperiences")
+    public Iterable<Experience> allTagsName() {
+        return experienceRepo.findAll();
+    }
 
-	@Transactional
-	@RequestMapping(value = "/admin/experience", method = RequestMethod.POST)
-	public String saveExperience(@Valid Experience experience, BindingResult bindingResult, Model model) {
+    @RequestMapping(value = "/admin/experience", method = RequestMethod.GET)
+    public String experiencesAdmin(Experience experience, Model model) {
+        return "admin/experience";
+    }
 
-		if (bindingResult.hasErrors()) {
-			return "admin/experience";
-		}
+    @Transactional
+    @RequestMapping(value = "/admin/experience", method = RequestMethod.POST)
+    public String saveExperience(@Valid Experience experience, BindingResult bindingResult, Model model) {
 
-		experienceRepo.save(experience);
+        if (bindingResult.hasErrors()) {
+            return "admin/experience";
+        }
 
-		model.asMap().clear();
-		model.addAttribute("mensagem",
-				experience.getId() == null ? "Experience added successfully!" : "Experience updated successfully!");
+        experienceRepo.save(experience);
 
-		return "redirect:/admin/experience";
-	}
+        model.asMap().clear();
+        model.addAttribute("mensagem",
+                experience.getId() == null ? "Experience added successfully!" : "Experience updated successfully!");
 
-	@RequestMapping(value = "/admin/experience/{id}")
-	public String singleExperience(@PathVariable(value = Mappings.ID_PARAMETER) Integer id, Model model) {
-		Experience experience = experienceRepo.findOne(id);
+        return "redirect:/admin/experience";
+    }
 
-		if (experience == null) {
-			experience = new Experience();
-		}
+    @RequestMapping(value = "/admin/experience/{id}")
+    public String singleExperience(@PathVariable(value = Mappings.ID_PARAMETER) Integer id, Model model) {
+        Experience experience = experienceRepo.findById(id).orElse(new Experience());
+        model.addAttribute(
+                "experience",
+                experience
+        );
 
-		model.addAttribute("experience", experience);
-
-		return "/admin/experience";
-	}
+        return "/admin/experience";
+    }
 
 }

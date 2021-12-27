@@ -78,14 +78,7 @@ public class PortfolioController {
 	
 	@RequestMapping(value = "/admin/portfolio/{id}")
 	public String singlePortfolio(@PathVariable(value = Mappings.ID_PARAMETER) Integer id, Model model) {
-		Portfolio portfolio = portfolioRepo.findOne(id);
-
-		if (portfolio == null) {
-			portfolio = new Portfolio();
-		}
-
-		model.addAttribute("portfolio", portfolio);
-
+		model.addAttribute("portfolio", portfolioRepo.findById(id).orElse(new Portfolio()));
 		return "/admin/portfolio";
 	}
 

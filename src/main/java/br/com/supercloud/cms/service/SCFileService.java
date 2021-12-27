@@ -32,6 +32,7 @@ import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SCFileService {
@@ -46,10 +47,10 @@ public class SCFileService {
 	private FileUtil fileUtil;
 
 	public void getPortfolioFile(Integer fileId, boolean thumb, HttpServletResponse response) throws IOException {
-		SCFile file = fileRepo.findOne(fileId);
-		if (file != null) {
+		Optional<SCFile> fileOpt = fileRepo.findById(fileId);
+		if (fileOpt.isPresent()) {
+			SCFile file = fileOpt.get();
 			response.setContentType(file.getContentType());
-
 			fileUtil.copyFileData(file.getId() + (thumb ? "_thumb" : "") + file.getExtension(), response.getOutputStream());
 		} else {
 			response.sendError(HttpStatus.NOT_FOUND.value());
@@ -58,7 +59,7 @@ public class SCFileService {
 
 	@Transactional
 	public SCFile uploadPortfolioFile(Integer idPortfolio, MultipartFile portfolioFile) throws IOException {
-		Portfolio portfolio = portfolioRepo.findOne(idPortfolio);
+		Portfolio portfolio = portfolioRepo.findById(idPortfolio).orElse(new Portfolio());
 		List<SCFile> images = portfolio.getImages();
 		if (images == null) {
 			images = new ArrayList<SCFile>();
@@ -93,15 +94,14 @@ public class SCFileService {
 
 	@Transactional
 	public void deletePortfolioFile(Integer portfolioId, Integer fileId) {
-		Portfolio portfolio = portfolioRepo.findOne(portfolioId);
-
-		if (portfolio != null && portfolio.getCoverImage() != null && portfolio.getCoverImage().getId() == fileId) {
-
+		Portfolio portfolio = portfolioRepo.findById(portfolioId).orElse(null);
+		if (portfolio != null
+				&& portfolio.getCoverImage() != null
+				&& portfolio.getCoverImage().getId().equals(fileId)
+		) {
 			portfolio.setCoverImage(null);
-
 			portfolioRepo.save(portfolio);
 		}
-
-		fileRepo.delete(fileId);
+		fileRepo.deleteById(fileId);
 	}
 }

@@ -1,67 +1,39 @@
-buildscript {
-    ext {
-        springBootVersion = '1.5.2.RELEASE'
-        springVersion = '4.3.7.RELEASE'
-        hibernateVersion = '5.2.9.Final'
-        postgresVersion = '42.0.0'
-    }
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
+plugins {
+    id 'org.springframework.boot' version '2.6.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
-apply plugin: 'application'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-version = '1.1'
-application {
-    mainClass = 'br.com.supercloud.cms.Application'
-}
+group = 'br.com.supercloud'
+version = '1.1-RELEASE'
+sourceCompatibility = '11'
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
-springBoot {
-    executable = true
-}
-
-bootRun {
-    addResources = true
+ext {
+    hibernateVersion = '5.6.2.Final'
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation("org.hibernate:hibernate-core:${hibernateVersion}")
+    implementation("org.hibernate:hibernate-ehcache:${hibernateVersion}")
+    implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    implementation("org.imgscalr:imgscalr-lib:4.2")
 
-    compile("org.springframework:spring-context-support:${springVersion}")
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.postgresql:postgresql'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
 
-    compile("org.hibernate:hibernate-core:${hibernateVersion}")
-    compile("org.hibernate:hibernate-entitymanager:${hibernateVersion}")
-    compile("org.hibernate:hibernate-ehcache:${hibernateVersion}") {
-        exclude group: 'net.sf.ehcache', module: 'ehcache-core'
-    }
-
-    compile("org.postgresql:postgresql:${postgresVersion}")
-
-    compile("net.sf.ehcache:ehcache:2.10.1")
-    compile("net.sf.ehcache:ehcache-core:2.6.11")
-
-    compile("javax.activation:activation:1.1.1")
-    compile("com.sun.mail:javax.mail:1.5.2")
-    compile("org.imgscalr:imgscalr-lib:4.2")
-
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+test {
+    useJUnitPlatform()
 }

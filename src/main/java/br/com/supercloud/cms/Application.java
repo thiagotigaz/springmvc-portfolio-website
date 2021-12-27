@@ -12,6 +12,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.util.unit.DataSize;
 
 import javax.servlet.MultipartConfigElement;
 
@@ -21,7 +22,7 @@ import javax.servlet.MultipartConfigElement;
 @EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 public class Application  {
 
-	private static final String MAX_REQUEST_SIZE = "15MB";
+	private static final long MAX_REQUEST_SIZE = 15L;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -53,8 +54,8 @@ public class Application  {
 		final MultipartConfigFactory factory = new MultipartConfigFactory();
 		// Place upper bounds on the size of the requests to ensure that
 		// clients don't abuse the web container by sending huge requests
-		factory.setMaxFileSize(MAX_REQUEST_SIZE);
-		factory.setMaxRequestSize(MAX_REQUEST_SIZE);
+		factory.setMaxFileSize(DataSize.ofMegabytes(MAX_REQUEST_SIZE));
+		factory.setMaxRequestSize(DataSize.ofMegabytes(MAX_REQUEST_SIZE));
 
 		// Return the configuration to setup multipart in the container
 		return factory.createMultipartConfig();
